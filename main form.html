@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup and Login</title>
+    <style>
+
+        /* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border-color: #ddd;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fcf9f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+    background-color: transparent;
+    backdrop-filter: blur(70px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.form-container {
+    width: 100%;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group label {
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #070707;
+}
+
+.input-group input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    width: 100%;
+}
+
+.input-group input:focus {
+    border-color: #030303;
+    outline: none;
+}
+
+.btn {
+    padding: 10px;
+    margin-top: 4px;
+    background-color: #1707fd;
+    color: black;
+    border-color: black;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 1000;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: rgb(5, 248, 167);
+}
+
+p {
+    text-align: center;
+    font-size: 14px;
+    color: #fffdfd;
+}
+
+a {
+    color: #0c0c0c;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+    </style>
+</head>
+<body background="C:\Users\samar\Documents\DATA\banner2.png">
+
+    <div class="container">
+        <div class="form-container">
+            <!-- Login Form -->
+            <div class="form" id="login-form">
+                <h2>Login</h2>
+                <form action="#" method="POST">
+                    <div class="input-group">
+                        <label for="login-Number">Mobile no.</label>
+                        <input type="Mobile no." id="login-number" name="Mobile no." placeholder="Enter your mobile number" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="login-password">Password</label>
+                        <input type="password" id="login-password" name="password" placeholder="Enter your password" required>
+                    </div>
+                    <button type="submit" class="btn">Login</button>
+                    <p>Don't have an account? <a href="javascript:void(0);" id="switch-to-signup">Sign up</a></p>
+                </form>
+            </div>
+
+            <!-- Signup Form -->
+            <div class="form" id="signup-form" style="display: none;">
+                <h2>Signup</h2>
+                <form method="POST" name="Movie-adda">
+                    <div class="input-group">
+                        <label for="signup-name"> Name</label>
+                        <input type="text" id="signup-name" name="Name" placeholder="Enter your name" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="signup-number">Mobile no.</label>
+                        <input type="Number" id="signup-number" name="Mobile no." placeholder="Enter your mobile number" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="signup-email">Email</label>
+                        <input type="email" id="signup-email" name="Email" placeholder="Enter your email" required>
+                    </div>
+                   
+                    <div class="input-group">
+                        <label for="signup-password">Password</label>
+                        <input type="password" id="signup-password" name="Password" placeholder="Enter your password" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="signup-Refer Passcode">Refer Passcode</label>
+                        <input type="Refer Passcode" id="signup-Refer Passcode" name="Refer Passcode" placeholder="Enter your Refer Passcode">
+                    </div>
+                    <button type="submit" class="btn">Sign up</button>
+                    <p>Already have an account? <a href="javascript:void(0);" id="switch-to-login">Login</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+<script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbz35wtXexsOfaZxuHcjBl_rHuvHiP7-kHbQ6sDyyk8GqoQ2L3yb5cCiXT3wmGmTtOhGzQ/exec'
+    const form = document.forms['Movie-adda']
+  
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => alert("Thanks for Contacting us..! We Will Contact You Soon..."))
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
+
+    <script>
+        document.getElementById("switch-to-signup").addEventListener("click", function() {
+            document.getElementById("login-form").style.display = "none";
+            document.getElementById("signup-form").style.display = "block";
+        });
+
+        document.getElementById("switch-to-login").addEventListener("click", function() {
+            document.getElementById("signup-form").style.display = "none";
+            document.getElementById("login-form").style.display = "block";
+        });
+    </script>
+
+</body>
+</html>
